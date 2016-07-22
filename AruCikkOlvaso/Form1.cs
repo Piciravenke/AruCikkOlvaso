@@ -61,16 +61,12 @@ namespace AruCikkOlvaso
 
         private void loader_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (var reader = (new StreamReader((string)e.Argument)))
+            using (var reader = new StreamReader((string)e.Argument, System.Text.Encoding.Default))          
             {
                 string line;
                 line = reader.ReadLine();
-                line = line.Replace('"', ' ').Trim();
-                string[] elements = line.Split(';');
-                /*nameDataGridViewTextBoxColumn.HeaderText = elements[0];
-                idDataGridViewTextBoxColumn.HeaderText = elements[1];
-                barCodeDataGridViewTextBoxColumn.HeaderText = elements[2];
-                unitDataGridViewTextBoxColumn.HeaderText = elements[3];*/
+                line = line.Replace("\"", "").Trim();
+                string[] elements = line.Split(';');               
                 Invoke(new Action(() =>
                 {
                     nameDataGridViewTextBoxColumn.HeaderText = elements[0];
@@ -82,7 +78,7 @@ namespace AruCikkOlvaso
                 while (!reader.EndOfStream)
                 {
                     line = reader.ReadLine();
-                    line = line.Replace('"', ' ');
+                    line = line.Replace("\"", "").Trim();
                     elements = line.Split(';');                    
                     Items item = new Items();
                     item.Name = elements[0];
@@ -120,18 +116,10 @@ namespace AruCikkOlvaso
                 Items current = new Items();            
                 if (bindingSourceItems.Current != null)                  
                 {
-
-                    current = new Items();//(Items) bindingSourceItems.Current;
-                     form.Items.Name = current.Name;
-                     form.Items.Id = current.Id;
-                     form.Items.BarCode = current.BarCode;
-                     form.Items.Unit = current.Unit;
-                   // form.Items = current;
+                    form.Items = (Items)bindingSourceItems.Current;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        Items item = form.Items;
-                        bindingSourceItems.CancelEdit();
-                        _items.Add(item);
+                        _items[bindingSourceItems.Position] = form.Items;
                     }
                 } else
                 {

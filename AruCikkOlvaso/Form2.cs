@@ -12,7 +12,7 @@ namespace AruCikkOlvaso
 {
     public partial class Form2 : Form
     {
-        public Items Items { get; set; }
+        public Items Items = new Items();       
 
         public Form2()
         {
@@ -20,9 +20,9 @@ namespace AruCikkOlvaso
         }        
 
         private void Form2_Load(object sender, EventArgs e)
-        {
-            Items = new Items();
-            bindingSource1.DataSource = Items;            
+        {           
+            bindingSource1.DataSource = Items;
+            comboBox1.SelectedValue= Items.Unit;                 
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

@@ -40,7 +40,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -143,6 +145,10 @@
             // 
             this.bindingSource1.DataSource = typeof(AruCikkOlvaso.Items);
             // 
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataSource = typeof(AruCikkOlvaso.Items);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +169,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +188,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
     }
 }
