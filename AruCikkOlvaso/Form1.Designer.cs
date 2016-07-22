@@ -46,6 +46,7 @@
             this.barCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceItems = new System.Windows.Forms.BindingSource(this.components);
+            this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceItems)).BeginInit();
@@ -88,7 +89,8 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewItemToolStripMenuItem});
+            this.addNewItemToolStripMenuItem,
+            this.editItemToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -102,6 +104,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -115,6 +119,7 @@
             this.dataGridView1.DataSource = this.bindingSourceItems;
             this.dataGridView1.Location = new System.Drawing.Point(12, 27);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(640, 181);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -151,28 +156,39 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // barCodeDataGridViewTextBoxColumn
             // 
             this.barCodeDataGridViewTextBoxColumn.DataPropertyName = "BarCode";
             this.barCodeDataGridViewTextBoxColumn.HeaderText = "BarCode";
             this.barCodeDataGridViewTextBoxColumn.Name = "barCodeDataGridViewTextBoxColumn";
+            this.barCodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // unitDataGridViewTextBoxColumn
             // 
             this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
             this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
             this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindingSourceItems
             // 
             this.bindingSourceItems.DataSource = typeof(AruCikkOlvaso.Items);
+            // 
+            // editItemToolStripMenuItem
+            // 
+            this.editItemToolStripMenuItem.Name = "editItemToolStripMenuItem";
+            this.editItemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editItemToolStripMenuItem.Text = "Edit item";
+            this.editItemToolStripMenuItem.Click += new System.EventHandler(this.editItemToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -213,6 +229,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn barCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem editItemToolStripMenuItem;
     }
 }
 

@@ -22,7 +22,7 @@ namespace AruCikkOlvaso
         private void Form2_Load(object sender, EventArgs e)
         {
             Items = new Items();
-            bindingSource1.DataSource = Items;
+            bindingSource1.DataSource = Items;            
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

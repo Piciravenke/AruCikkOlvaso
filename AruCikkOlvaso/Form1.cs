@@ -64,12 +64,26 @@ namespace AruCikkOlvaso
             using (var reader = (new StreamReader((string)e.Argument)))
             {
                 string line;
+                line = reader.ReadLine();
+                line = line.Replace('"', ' ').Trim();
+                string[] elements = line.Split(';');
+                /*nameDataGridViewTextBoxColumn.HeaderText = elements[0];
+                idDataGridViewTextBoxColumn.HeaderText = elements[1];
+                barCodeDataGridViewTextBoxColumn.HeaderText = elements[2];
+                unitDataGridViewTextBoxColumn.HeaderText = elements[3];*/
+                Invoke(new Action(() =>
+                {
+                    nameDataGridViewTextBoxColumn.HeaderText = elements[0];
+                    idDataGridViewTextBoxColumn.HeaderText = elements[1];
+                    barCodeDataGridViewTextBoxColumn.HeaderText = elements[2];
+                    unitDataGridViewTextBoxColumn.HeaderText = elements[3];
+                }));
+
                 while (!reader.EndOfStream)
                 {
                     line = reader.ReadLine();
-                    //Thread.Sleep(1000);
                     line = line.Replace('"', ' ');
-                    string[] elements = line.Split(';');                    
+                    elements = line.Split(';');                    
                     Items item = new Items();
                     item.Name = elements[0];
                     item.Id = elements[1];
@@ -95,6 +109,33 @@ namespace AruCikkOlvaso
                     bindingSourceItems.CancelEdit();
                     _items.Add(item);
 
+                }
+            }
+        }
+
+        private void editItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form2 form = new Form2())
+            {
+                Items current = new Items();            
+                if (bindingSourceItems.Current != null)                  
+                {
+
+                    current = new Items();//(Items) bindingSourceItems.Current;
+                     form.Items.Name = current.Name;
+                     form.Items.Id = current.Id;
+                     form.Items.BarCode = current.BarCode;
+                     form.Items.Unit = current.Unit;
+                   // form.Items = current;
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        Items item = form.Items;
+                        bindingSourceItems.CancelEdit();
+                        _items.Add(item);
+                    }
+                } else
+                {
+                    MessageBox.Show("Nincs kijelölt Áru!");
                 }
             }
         }

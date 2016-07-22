@@ -34,12 +34,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,10 +87,6 @@
             this.textBox1.Size = new System.Drawing.Size(111, 20);
             this.textBox1.TabIndex = 4;
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(AruCikkOlvaso.Items);
-            // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Id", true));
@@ -106,14 +102,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(111, 20);
             this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Unit", true));
-            this.textBox4.Location = new System.Drawing.Point(97, 206);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(111, 20);
-            this.textBox4.TabIndex = 7;
             // 
             // button1
             // 
@@ -135,14 +123,34 @@
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Unit", true));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Csomag",
+            "darab",
+            "méter",
+            "Pár"});
+            this.comboBox1.Location = new System.Drawing.Point(97, 201);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Sorted = true;
+            this.comboBox1.TabIndex = 10;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(AruCikkOlvaso.Items);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 303);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -169,9 +177,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
