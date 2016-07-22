@@ -44,10 +44,18 @@ namespace AruCikkOlvaso
                 save.Filter = "Csv fájlok| *.csv|Minden fájl| *.*";
                 save.OverwritePrompt = true;
                 save.AddExtension = true;
-                save.DefaultExt = ".csv";
+                save.DefaultExt = ".csv";               
                 if (save.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show(save.FileName);
+                    using (StreamWriter writer = new StreamWriter(save.OpenFile(), System.Text.Encoding.Default))
+                    {
+                        foreach (Items item in _items)
+                        {
+                            string output = "\"" + item.Name + "\";\"" + item.Id + "\";\"" + item.BarCode +
+                                "\";\"" + item.Unit + "\"";
+                            writer.WriteLine(output);
+                        }
+                    }
                 }
             }
         }
