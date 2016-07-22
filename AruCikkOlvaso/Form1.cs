@@ -51,8 +51,7 @@ namespace AruCikkOlvaso
                     {
                         foreach (Items item in _items)
                         {
-                            string output = "\"" + item.Name + "\";\"" + item.Id + "\";\"" + item.BarCode +
-                                "\";\"" + item.Unit + "\"";
+                            string output = String.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\"", item.Name, item.Id, item.BarCode, item.Unit);                           
                             writer.WriteLine(output);
                         }
                     }
@@ -124,7 +123,12 @@ namespace AruCikkOlvaso
                 Items current = new Items();            
                 if (bindingSourceItems.Current != null)                  
                 {
-                    form.Items = (Items)bindingSourceItems.Current;
+                   
+                    current = (Items)bindingSourceItems.Current;
+                    form.Items.Name = current.Name;
+                    form.Items.Id = current.Id;
+                    form.Items.BarCode = current.BarCode;
+                    form.Items.Unit = current.Unit;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         _items[bindingSourceItems.Position] = form.Items;
